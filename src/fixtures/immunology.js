@@ -46,7 +46,7 @@ These findings identify tonic type I IFN signalling as a determinant of the lowe
     authorComments:
 `This reads well and meets the requirements I can see — I don't have substantive suggestions to offer.
 
-For what it's worth, the things that make it work: the hypothesis is stated explicitly up front, the abbreviation is defined on first use, the result includes the mechanism rather than only the outcome, and the consistency across independent experiments is noted. The conclusion follows directly from what you report and doesn't overreach.
+The things that make it work: the hypothesis is stated explicitly up front, the abbreviation is defined on first use, the result includes the mechanism rather than only the outcome, and the consistency across independent experiments is noted. The conclusion follows directly from what you report and doesn't overreach.
 
 If you wanted to push on anything, it would be a matter of taste rather than a gap — but the abstract is in good shape as it stands.`,
 

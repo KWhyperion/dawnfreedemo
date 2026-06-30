@@ -76,7 +76,7 @@ export default function LeadCaptureForm() {
     return (
         <Box component="form" onSubmit={handleSubmit} noValidate>
             <Typography variant="h6" sx={{fontWeight: 600, mb: 0.5}}>
-                See Dawn on your conference’s abstracts
+                Try Dawn in your conference
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{mb: 2}}>
                 Leave your details and we’ll show you how Dawn can work for your authors.

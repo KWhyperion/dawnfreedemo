@@ -79,7 +79,7 @@ export default function LeadCaptureForm() {
                 See Dawn on your conference’s abstracts
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{mb: 2}}>
-                Leave your details and we’ll show you how Dawn works for your authors.
+                Leave your details and we’ll show you how Dawn can work for your authors.
             </Typography>
 
             {status === 'error' && (

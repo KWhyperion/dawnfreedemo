@@ -39,26 +39,26 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                 </Typography>
 
                 <Typography variant="h2" sx={{fontWeight: 400, fontSize: 18, color: 'text.secondary', mb: 4, lineHeight: 1.5}}>
-                    Dawn is an advisor that reads an author’s abstract before they submit and
-                    tells them how it reads — where the structure, clarity, or completeness could
-                    be tightened. It comments on the writing, never on the science.
+                    <p>Dawn Free reads an author’s abstract before they submit and
+                        tells them how the structure, clarity, or completeness could
+                        be improved. It comments on the writing, never on the academic quality.</p>
+                    <p>It's a standalone service that works alongside <em>any</em> abstract system. To use it, simply add a link from your Call For Abstracts page or email. </p>
                 </Typography>
 
                 <Stack spacing={2.5} sx={{mb: 5}}>
                     <ExplainerPoint title="What Dawn does">
-                        Gives authors private, advisory feedback on a draft abstract — a clear aim,
-                        defined terms, concrete results, a conclusion that matches the evidence —
-                        so it’s in good shape before it reaches your reviewers.
+                        Gives authors private advice on a draft abstract so it’s in good shape before it reaches the reviewers. Dawn might suggest a clear aim,
+                        defined terms, concrete results, a conclusion that matches the evidence, and so on.
+                        .
                     </ExplainerPoint>
                     <ExplainerPoint title="What Dawn Free is">
-                        A no-cost entry point to Dawn for a conference’s authors. This page is a
-                        short demo of it, built for the organisers who run those conferences.
+                        A no-cost version of our standard Dawn service. This page is a
+                        short demo, built for conference organisers.
                     </ExplainerPoint>
                     <ExplainerPoint title="What this demo shows">
-                        A few <strong>prepared, illustrative examples</strong> — a sample abstract in
-                        a chosen field and the feedback Dawn would give on it. It’s a worked
-                        walkthrough, <strong>not a live tool</strong>: you won’t paste your own
-                        abstract in. Pick a field below to see an example matched to it.
+                        <strong>Illustrative examples</strong> - sample abstracts in
+                        chosen fields and Dawn's feedback. It’s a
+                        walkthrough but it shows exactly how straightforward Dawn is.  Pick a field below to choose an example.
                     </ExplainerPoint>
                 </Stack>
 

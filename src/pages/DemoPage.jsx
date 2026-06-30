@@ -121,7 +121,7 @@ export default function DemoPage({sample, onBack}) {
                     </Box>
 
                     {/* ── Right: abstract + capture ── */}
-                    <Box sx={{flex: 1, minWidth: 0, width: '100%'}}>
+                    <Box sx={{flex: 1, minWidth: 0, width: '100%',  mt: { md: '20px' }}}>
                         <SampleAbstract
                             domainLabel={sample?.domainLabel}
                             abstract={sample?.abstract}

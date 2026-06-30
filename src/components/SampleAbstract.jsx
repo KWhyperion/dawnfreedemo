@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Typography, Chip, Paper, Fade} from '@mui/material';
+import {Box, Typography, Chip, Paper, alpha, Fade} from '@mui/material';
 
 // ── SampleAbstract ───────────────────────────────────────────────────────────
 // Renders the selected sample's dummy abstract (title + body). The body is plain
@@ -14,7 +14,7 @@ export default function SampleAbstract({domainLabel, abstract, showTitle = true,
     const paragraphs = (abstract.body || '').split(/\n{2,}/).filter(Boolean);
 
     return (
-        <Paper variant="outlined" sx={{p: {xs: 2.5, md: 3.5}, borderRadius: 2}}>
+        <Paper variant="outlined" sx={{p: {xs: 2.5, md: 3.5}, position:'relative', border: '1px solid #2196F3',borderRadius: 2}}>
             <Box sx={{display: 'flex', alignItems: 'center', gap: 1, mb: 1.5}}>
                 <Chip label="Sample abstract" size="small" color="primary" variant="outlined"/>
                 {domainLabel && (
@@ -24,6 +24,7 @@ export default function SampleAbstract({domainLabel, abstract, showTitle = true,
             <Typography variant="h2" sx={{fontSize: 20, fontWeight: 600, mb: 1.5, lineHeight: 1.35}}>
                 {abstract.title}
             </Typography>
+
             {showBody && (
                 <Fade in appear timeout={250}>
                     <Box>
@@ -39,6 +40,24 @@ export default function SampleAbstract({domainLabel, abstract, showTitle = true,
                     </Box>
                 </Fade>
             )}
+            {/* Watermark label over the text */}
+            <Typography
+                aria-hidden
+                sx={(theme) => ({
+                    position: 'absolute',
+                    top: '50%', left: '50%',
+                    transform: 'translate(-50%, -50%) rotate(-30deg)',
+                    fontSize: '5rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    color: alpha(theme.palette.text.primary, 0.1),
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                    whiteSpace: 'nowrap',
+                })}
+            >
+                SAMPLE
+            </Typography>
         </Paper>
     );
 }

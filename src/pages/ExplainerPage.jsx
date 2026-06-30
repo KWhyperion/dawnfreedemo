@@ -39,9 +39,9 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                 </Typography>
 
                 <Typography variant="h2" sx={{fontWeight: 400, fontSize: 18, color: 'text.secondary', mb: 4, lineHeight: 1.5}}>
-                    <p>Dawn Free reads an author’s abstract before they submit and
-                        tells them how the structure, clarity, or completeness could
-                        be improved. It comments on the writing, never on the academic quality.</p>
+                    <p>Dawn Free reads an author’s abstract before they submit. It
+                        suggests how the structure, clarity, or completeness could
+                        be improved and advises on the best conference topic and appropriate presentation format, oral or poster. It comments on the writing, never on the academic quality.</p>
                     <p>It's a standalone service that works alongside <em>any</em> abstract system. To use it, simply add a link from your Call For Abstracts page or email. </p>
                 </Typography>
 
@@ -52,7 +52,7 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                         .
                     </ExplainerPoint>
                     <ExplainerPoint title="What Dawn Free is">
-                        A no-cost version of our standard Dawn service. This page is a
+                        A no-cost version of our standard Dawn service, designed as a drop-in for existing submission systems. This page is a
                         short demo, built for conference organisers.
                     </ExplainerPoint>
                     <ExplainerPoint title="What this demo shows">

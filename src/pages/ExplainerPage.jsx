@@ -30,66 +30,42 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                 </Box>
 
                 {/* Hero — the former lozenge text, now the page's headline */}
-                <Typography variant="h1" sx={{mb: 1.5}}>
-                    Dawn Free — demo
-                </Typography>
 
                 <Typography variant="h2" sx={{fontWeight: 600, mb: 2.5}}>
-                    Pre-submission feedback on conference abstracts
+                   Dawn Free - pre-submission feedback for authors
                 </Typography>
 
                 <Typography variant="h2" sx={{fontWeight: 400, fontSize: 18, color: 'text.secondary', mb: 4, lineHeight: 1.5}}>
-                    <p>Dawn Free reads an author’s abstract before they submit. It
-                        suggests how the structure, clarity, or completeness could
-                        be improved and advises on the best conference topic and appropriate presentation format, oral or poster. It comments on the writing, never on the academic quality.</p>
-                    <p>It's a standalone service that works alongside <em>any</em> abstract system. To use it, simply add a link from your Call For Abstracts page or email. </p>
-                </Typography>
+                    <p>Dawn Free gives authors private advice on their abstracts so they're in good shape before they reach the reviewers.
+                        </p>
+                    <p>It's a drop-in service that works with <em>any</em> abstract system. Simply add a link to a web page or email. </p>
 
-                <Stack spacing={2.5} sx={{mb: 5}}>
-                    <ExplainerPoint title="What Dawn does">
-                        Gives authors private advice on a draft abstract so it’s in good shape before it reaches the reviewers. Dawn might suggest a clear aim,
-                        defined terms, concrete results, a conclusion that matches the evidence, and so on.
-                        .
-                    </ExplainerPoint>
-                    <ExplainerPoint title="What Dawn Free is">
-                        A no-cost version of our standard Dawn service, designed as a drop-in for existing submission systems. This page is a
-                        short demo, built for conference organisers.
-                    </ExplainerPoint>
-                    <ExplainerPoint title="What this demo shows">
-                        <strong>Illustrative examples</strong> - sample abstracts in
-                        chosen fields and Dawn's feedback. It’s a
-                        walkthrough that shows exactly how straightforward Dawn is.  Pick a field below to choose an example.
-                    </ExplainerPoint>
+                    <p><strong>Choose a conference topic for a demonstration:</strong></p>
+                </Typography>
+                <Stack direction={{xs: 'column', sm: 'row'}} spacing={2} alignItems={{sm: 'center'}}>
+                    <FormControl fullWidth size="small" sx={{maxWidth: {sm: 320}}}>
+                        <InputLabel id="domain-label">Topic</InputLabel>
+                        <Select
+                            labelId="domain-label"
+                            label="Field"
+                            value={selectedKey}
+                            onChange={(e) => onSelectDomain(e.target.value)}
+                        >
+                            {DOMAIN_OPTIONS.map((opt) => (
+                                <MenuItem key={opt.value} value={opt.value}>{opt.label}</MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        endIcon={<ArrowForwardIcon/>}
+                        onClick={onContinue}
+                    >
+                        See it
+                    </Button>
                 </Stack>
 
-                <Paper variant="outlined" sx={{p: {xs: 2.5, md: 3.5}, borderRadius: 2}}>
-                    <Typography variant="h6" sx={{fontWeight: 600, mb: 2}}>
-                        Choose a field for your worked example
-                    </Typography>
-                    <Stack direction={{xs: 'column', sm: 'row'}} spacing={2} alignItems={{sm: 'center'}}>
-                        <FormControl fullWidth size="small" sx={{maxWidth: {sm: 320}}}>
-                            <InputLabel id="domain-label">Field</InputLabel>
-                            <Select
-                                labelId="domain-label"
-                                label="Field"
-                                value={selectedKey}
-                                onChange={(e) => onSelectDomain(e.target.value)}
-                            >
-                                {DOMAIN_OPTIONS.map((opt) => (
-                                    <MenuItem key={opt.value} value={opt.value}>{opt.label}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            endIcon={<ArrowForwardIcon/>}
-                            onClick={onContinue}
-                        >
-                            See the example
-                        </Button>
-                    </Stack>
-                </Paper>
             </Container>
         </Box>
     );

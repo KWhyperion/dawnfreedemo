@@ -655,9 +655,7 @@ export default function AbstractAnalysisPanel({
                                                   controlStates,
                                               }) {
     const SESSION_KEY = 'aiPanelIntroPlayed';
-    const [hasIntroPlayed, setHasIntroPlayed] = useState(
-        () => safeSession.get(SESSION_KEY) === 'true'
-    );
+    const [hasIntroPlayed, setHasIntroPlayed] = useState(false); // was: safeSession.get(...)
     const prevSubmissionIdRef = useRef(submissionId);
     const prevPageNumberRef = useRef(pageNumber);
 
@@ -817,8 +815,7 @@ export default function AbstractAnalysisPanel({
     const isReanalysing = isAnalysingStructure && !structural;
 
     const handleIntroEnd = useCallback(() => {
-        safeSession.set(SESSION_KEY, 'true');
-        setHasIntroPlayed(true);
+        setHasIntroPlayed(true);   // drop the safeSession.set — don't persist across loads
     }, []);
 
     // ── Memoised markdown ─────────────────────────────────────────

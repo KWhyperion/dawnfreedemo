@@ -20,7 +20,7 @@ import useFixtureDriver from '../hooks/useFixtureDriver.js';
 const TITLE_DELAY = 500;        // blank → title appears
 const ABSTRACT_DELAY = 500;     // title shown → abstract body appears
 const PANEL_SLIDE_DELAY = 2000; // abstract shown → panel slides in
-const STRUCTURAL_DELAY = 500;   // panel in → structural appears (the isAnalysingStructure beat)
+const  STRUCTURAL_DELAY = 900;   // panel in → structural appears (the isAnalysingStructure beat)
 const THEME_DELAY = 200;        // author feedback complete → conference theme block
 const PRESENTATION_DELAY = 200; // theme block shown → presentation suitability
 

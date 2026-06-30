@@ -14,7 +14,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import faceIcon     from '../../assets/face.png';
+import faceIcon from '../../assets/face.png';
 import faceBlueIcon from '../../assets/face_blue.png';
 
 // ── Safe sessionStorage (demo adaptation) ────────────────────────
@@ -22,20 +22,46 @@ import faceBlueIcon from '../../assets/face_blue.png';
 // forwarded demo link can be opened in sandboxed/embedded contexts where
 // sessionStorage access throws; this wrapper guarantees it never does.
 const safeSession = {
-    get(key)      { try { return window.sessionStorage.getItem(key); } catch { return null; } },
-    set(key, val) { try { window.sessionStorage.setItem(key, val); } catch { /* no-op */ } },
-    remove(key)   { try { window.sessionStorage.removeItem(key); } catch { /* no-op */ } },
+    get(key) {
+        try {
+            return window.sessionStorage.getItem(key);
+        } catch {
+            return null;
+        }
+    },
+    set(key, val) {
+        try {
+            window.sessionStorage.setItem(key, val);
+        } catch { /* no-op */
+        }
+    },
+    remove(key) {
+        try {
+            window.sessionStorage.removeItem(key);
+        } catch { /* no-op */
+        }
+    },
 };
 
 // ── Pulse animation ──────────────────────────────────────────────
 const pulse = keyframes`
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50%      { opacity: 1;   transform: scale(1.5); }
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
 `;
 
 const textPulse = keyframes`
-    0%, 100% { opacity: 0.4; }
-    50%      { opacity: 1; }
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
 `;
 
 // ── Markdown-to-JSX renderer ─────────────────────────────────────
@@ -188,8 +214,8 @@ function AnimatedHeader({hasIntroPlayed, onIntroEnd}) {
         return () => clearTimeout(holdTimer);
     }, [hasIntroPlayed, onIntroEnd]);
 
-    const isCentred  = phase === 'centre';
-    const isSettled  = phase === 'settled';
+    const isCentred = phase === 'centre';
+    const isSettled = phase === 'settled';
     const isSettling = phase === 'settling';
     const inTransition = isSettling || isSettled;
 
@@ -197,7 +223,7 @@ function AnimatedHeader({hasIntroPlayed, onIntroEnd}) {
     // Blue fully visible at centre, fully gone by settled
     const blueOpacity = isCentred ? 1 : 0;
     // Sun logo: invisible at centre, fully visible once settled
-    const sunOpacity  = isCentred ? 0 : 1;
+    const sunOpacity = isCentred ? 0 : 1;
 
     return (
         <Box
@@ -428,8 +454,8 @@ function TopicBlock({label, recommendation, ambiguity}) {
     if (!ambiguity) return null;
 
     const ambiguityType = ambiguity.type || 'none';
-    const detected      = ambiguity.detected;
-    const style         = AMBIGUITY_STYLES[ambiguityType] || AMBIGUITY_STYLES.none;
+    const detected = ambiguity.detected;
+    const style = AMBIGUITY_STYLES[ambiguityType] || AMBIGUITY_STYLES.none;
 
     if (!recommendation && !detected) return null;
 
@@ -459,7 +485,7 @@ function TopicBlock({label, recommendation, ambiguity}) {
                             {!detected && (
                                 <Typography component="span" variant="caption"
                                             sx={{fontWeight: 400, color: style.color, opacity: 0.75}}>
-                                    (auto-selected)
+                                    {/*(auto-selected)*/}
                                 </Typography>
                             )}
                         </Box>
@@ -482,37 +508,37 @@ function TopicBlock({label, recommendation, ambiguity}) {
 
 // ── Suitability block ────────────────────────────────────────────
 const RATING_COLOURS = {
-    HIGH:     {bg: '#e8f5e9', border: '#4caf50', text: '#2e7d32'},
+    HIGH: {bg: '#e8f5e9', border: '#4caf50', text: '#2e7d32'},
     MODERATE: {bg: '#fff8e1', border: '#ffa726', text: '#5d4037'},
-    LOW:      {bg: '#ffebee', border: '#ef5350', text: '#b71c1c'},
+    LOW: {bg: '#ffebee', border: '#ef5350', text: '#b71c1c'},
 };
 
 const COMBINED_LABELS = {
-    HIGH:     'Well suited for oral presentation',
+    HIGH: 'Well suited for oral presentation',
     MODERATE: 'May suit oral presentation',
-    LOW:      'Better suited to poster format',
+    LOW: 'Better suited to poster format',
 };
 
 const SIGNAL_DISPLAY = {
-    singleQuestion:     'Single focus',
+    singleQuestion: 'Single focus',
     narrativeCoherence: 'Clear narrative',
-    focusedOutcome:     'Focused outcome',
-    cognitiveLoad:      'Audience load',
+    focusedOutcome: 'Focused outcome',
+    cognitiveLoad: 'Audience load',
 };
 
 const SIGNAL_RATING_COLOURS = {
-    singleQuestion:     {HIGH: 'success', MODERATE: 'warning', LOW: 'error'},
+    singleQuestion: {HIGH: 'success', MODERATE: 'warning', LOW: 'error'},
     narrativeCoherence: {HIGH: 'success', MODERATE: 'warning', LOW: 'error'},
-    focusedOutcome:     {HIGH: 'success', MODERATE: 'warning', LOW: 'error'},
-    cognitiveLoad:      {LOW: 'success', MODERATE: 'warning', HIGH: 'error'},
+    focusedOutcome: {HIGH: 'success', MODERATE: 'warning', LOW: 'error'},
+    cognitiveLoad: {LOW: 'success', MODERATE: 'warning', HIGH: 'error'},
 };
 
 function SuitabilityBlock({presentation}) {
     if (!presentation) return null;
 
-    const combined       = presentation.combined;
-    const colours        = RATING_COLOURS[combined] || RATING_COLOURS.MODERATE;
-    const signals        = presentation.signals || {};
+    const combined = presentation.combined;
+    const colours = RATING_COLOURS[combined] || RATING_COLOURS.MODERATE;
+    const signals = presentation.signals || {};
     const visibleSignals = Object.entries(signals).filter(([, sig]) => !sig.withheld);
 
     return (
@@ -633,13 +659,13 @@ export default function AbstractAnalysisPanel({
         () => safeSession.get(SESSION_KEY) === 'true'
     );
     const prevSubmissionIdRef = useRef(submissionId);
-    const prevPageNumberRef   = useRef(pageNumber);
+    const prevPageNumberRef = useRef(pageNumber);
 
     // userOverrides: keyed by accordion id ('classifications:<field>' or 'presentation')
     // null = no override, true = force open, false = force closed
     const [userOverrides, setUserOverrides] = useState({});
 
-    const showPanel  = pageNumber > 0;
+    const showPanel = pageNumber > 0;
     const isLastPage = pageNumber === totalPages - 1;
 
     // Derive which classification fields are visible on the current page
@@ -770,7 +796,7 @@ export default function AbstractAnalysisPanel({
     //   - userOverride === null / undefined → use automatic logic
     function resolveOpen(key, automaticOpen) {
         const override = userOverrides[key];
-        if (override === true)  return true;
+        if (override === true) return true;
         if (override === false) return false;
         return automaticOpen;
     }
@@ -784,11 +810,11 @@ export default function AbstractAnalysisPanel({
 
     // ── Derived states ───────────────────────────────────────────
     const hasStructural = !!structural;
-    const hasAuthor     = !!author?.comments;
+    const hasAuthor = !!author?.comments;
     const hasPresentation = !!presentation;
 
-    const isIdle         = !structural && !isAnalysingStructure;
-    const isReanalysing  = isAnalysingStructure && !structural;
+    const isIdle = !structural && !isAnalysingStructure;
+    const isReanalysing = isAnalysingStructure && !structural;
 
     const handleIntroEnd = useCallback(() => {
         safeSession.set(SESSION_KEY, 'true');
@@ -900,14 +926,20 @@ export default function AbstractAnalysisPanel({
                                                 ) : isStreaming && hasAuthor ? (
                                                     <Box>
                                                         {authorContent}
-                                                        <Box sx={{display: 'flex', alignItems: 'center', gap: 1, mt: 0.5}}>
+                                                        <Box sx={{
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            gap: 1,
+                                                            mt: 0.5
+                                                        }}>
                                                             <PulseDot/>
                                                         </Box>
                                                     </Box>
                                                 ) : hasAuthor ? (
                                                     <Box>{authorContent}</Box>
                                                 ) : (
-                                                    <Typography variant="caption" sx={{color: 'text.disabled', fontStyle: 'italic'}}>
+                                                    <Typography variant="caption"
+                                                                sx={{color: 'text.disabled', fontStyle: 'italic'}}>
                                                         Detailed feedback will appear shortly…
                                                     </Typography>
                                                 )}
@@ -922,10 +954,10 @@ export default function AbstractAnalysisPanel({
                                         const clsResult = structural.classifications?.[cls.field];
                                         if (!clsResult) return null;
 
-                                        const accordionKey  = `classifications:${cls.field}`;
+                                        const accordionKey = `classifications:${cls.field}`;
                                         const automaticOpen = visibleClassificationFields.has(cls.field);
-                                        const isOpen        = resolveOpen(accordionKey, automaticOpen);
-                                        const currentOpen   = isOpen;
+                                        const isOpen = resolveOpen(accordionKey, automaticOpen);
+                                        const currentOpen = isOpen;
 
                                         return (
                                             <React.Fragment key={cls.field}>
@@ -950,9 +982,9 @@ export default function AbstractAnalysisPanel({
 
                                     {/* ── Presentation suitability accordion ── */}
                                     {(() => {
-                                        const accordionKey  = 'presentation';
+                                        const accordionKey = 'presentation';
                                         const automaticOpen = isLastPage;
-                                        const isOpen        = resolveOpen(accordionKey, automaticOpen);
+                                        const isOpen = resolveOpen(accordionKey, automaticOpen);
 
                                         return (
                                             <AccordionSection
@@ -964,7 +996,12 @@ export default function AbstractAnalysisPanel({
                                                 {hasPresentation ? (
                                                     <SuitabilityBlock presentation={presentation}/>
                                                 ) : (
-                                                    <Box sx={{display: 'flex', alignItems: 'center', gap: 1.25, py: 0.5}}>
+                                                    <Box sx={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: 1.25,
+                                                        py: 0.5
+                                                    }}>
                                                         <PulseDot/>
                                                         <Typography variant="caption" color="text.secondary">
                                                             Assessing suitability…

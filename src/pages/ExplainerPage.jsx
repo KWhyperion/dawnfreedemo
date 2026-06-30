@@ -58,7 +58,7 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                     <ExplainerPoint title="What this demo shows">
                         <strong>Illustrative examples</strong> - sample abstracts in
                         chosen fields and Dawn's feedback. It’s a
-                        walkthrough but it shows exactly how straightforward Dawn is.  Pick a field below to choose an example.
+                        walkthrough that shows exactly how straightforward Dawn is.  Pick a field below to choose an example.
                     </ExplainerPoint>
                 </Stack>
 

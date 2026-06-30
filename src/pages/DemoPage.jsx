@@ -63,6 +63,12 @@ export default function DemoPage({sample, onBack}) {
         if (reveal.panel) start();
     }, [reveal.panel, start]);
 
+    // Funnel: Page 2 viewed, sliced by field (the resolved fixture key). Guarded
+    // so a blocked/absent Plausible never throws.
+    useEffect(() => {
+        window.plausible?.('Page 2 viewed', {props: {sample: sample?.key}});
+    }, []);
+
     // Topic-advice control list for the panel — one entry per classification
     // field, derived from the fixture's taxonomy. Must be NON-EMPTY for the panel
     // to render the topic accordion (with [] it renders nothing). The matching
@@ -133,7 +139,7 @@ export default function DemoPage({sample, onBack}) {
                         <Fade in={outputBegun} mountOnEnter>
                             <Box sx={{mt: 4}}>
                                 <Divider sx={{mb: 4}}/>
-                                <LeadCaptureForm/>
+                                <LeadCaptureForm sampleKey={sample?.key}/>
                             </Box>
                         </Fade>
                     </Box>

@@ -14,7 +14,7 @@ import {LEAD_ENDPOINT} from '../config.js';
 //   • `website` is a honeypot field (see LeadCaptureForm). It is sent as-is; the
 //     backend uses it to silently drop bots. The frontend does not branch on it.
 
-export async function submitLead({email, name = '', org = '', website = ''}) {
+export async function submitLead({email, name = '', org = '', website = '', sample}) {
     if (!LEAD_ENDPOINT) {
         // Misconfiguration is itself a loud failure — better to error than to
         // silently accept a lead we can't deliver.
@@ -41,6 +41,9 @@ export async function submitLead({email, name = '', org = '', website = ''}) {
 
     // The one log that matters (per the logging policy): capture succeeded.
     console.log('[DawnFree-demo] lead capture OK');
+    // Funnel: Lead captured — SUCCESS branch only (never on attempt or failure),
+    // sliced by field. Guarded so a blocked/absent Plausible never throws.
+    window.plausible?.('Lead captured', {props: {sample}});
     return true;
 }
 

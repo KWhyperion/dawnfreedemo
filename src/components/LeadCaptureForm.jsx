@@ -29,7 +29,7 @@ const visuallyHidden = {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function LeadCaptureForm() {
+export default function LeadCaptureForm({sampleKey}) {
     const [name, setName] = useState('');
     const [org, setOrg] = useState('');
     const [email, setEmail] = useState('');
@@ -50,7 +50,7 @@ export default function LeadCaptureForm() {
 
         setStatus('submitting');
         try {
-            await submitLead({email: email.trim(), name: name.trim(), org: org.trim(), website});
+            await submitLead({email: email.trim(), name: name.trim(), org: org.trim(), website, sample: sampleKey});
             setStatus('success');
         } catch (err) {
             // Loud failure: show the error, stay on the form so they can retry.

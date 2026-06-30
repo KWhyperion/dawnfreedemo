@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
     Box, Container, Typography, Stack, Button,
     FormControl, InputLabel, Select, MenuItem, Paper,
@@ -13,6 +13,11 @@ import {DOMAIN_OPTIONS} from '../fixtures/index.js';
 // that the samples are illustrative worked examples, not a live tool they feed.
 
 export default function ExplainerPage({selectedKey, onSelectDomain, onContinue}) {
+    // Funnel: Page 1 viewed (guarded so a blocked/absent Plausible never throws).
+    useEffect(() => {
+        window.plausible?.('Page 1 viewed');
+    }, []);
+
     return (
         <Box sx={{minHeight: '100vh', py: {xs: 5, md: 9}}}>
             <Container maxWidth="md">

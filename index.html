@@ -6,13 +6,16 @@
     <meta name="description"
           content="Dawn — pre-submission feedback on conference abstracts. An illustrative demo for conference organisers."/>
     <title>Dawn Free — pre-submission abstract feedback</title>
-    <!-- Privacy-friendly analytics by Plausible -->
-    <script async src="https://plausible.io/js/pa-iwwlpuGDc9XuLOVNX09V6.js"></script>
-    <script>
-        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-        plausible.init()
-    </script>
 
+    <!-- Plausible analytics (tagged-events variant so named custom events work).
+         The stub queues events fired before the script loads so none are lost;
+         if the script is blocked/absent, window.plausible stays the stub and
+         calls simply no-op. -->
+    <script defer data-domain="dawnfree-demo.hyperionlive.com"
+            src="https://plausible.io/js/script.tagged-events.js"></script>
+    <script>
+        window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) }
+    </script>
 </head>
 <body>
 <div id="root"></div>

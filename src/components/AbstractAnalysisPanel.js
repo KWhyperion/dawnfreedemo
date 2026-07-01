@@ -828,19 +828,30 @@ export default function AbstractAnalysisPanel({
 
     return (
         <Slide direction="right" in={showPanel} mountOnEnter unmountOnExit>
-            <Box sx={{display: 'flex', flexShrink: 0, height: '100%', py: '20px', pl: '20px'}}>
+            <Box sx={{
+                display: 'flex',
+                flexShrink: 0,
+                minWidth: 0,
+                // Desktop: fill the sticky column height. Mobile: size to content
+                // so the panel flows in the stack instead of clipping/scrolling.
+                height: {xs: 'auto', md: '100%'},
+                py: {xs: 0, md: '20px'},
+                pl: {xs: 0, md: '20px'},
+            }}>
                 <Fade in={showPanel}>
                     <Card
                         variant="outlined"
                         sx={{
-                            width: PANEL_WIDTH,
+                            // Full-width on mobile; fixed desktop width in the column.
+                            width: {xs: '100%', md: PANEL_WIDTH},
                             borderRadius: 2,
                             borderColor: '#2196f3',
                             boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
                             overflow: 'hidden',
                             display: 'flex',
                             flexDirection: 'column',
-                            height: '100%',
+                            // Fill the sticky column on desktop; content-height on mobile.
+                            height: {xs: 'auto', md: '100%'},
                         }}
                     >
                         {/* ── Header ──────────────────────────── */}
@@ -850,9 +861,12 @@ export default function AbstractAnalysisPanel({
                         />
 
                         {/* ── Scrollable body ──────────────────── */}
+                        {/* Desktop: flex-fill + internal scroll. Mobile: size to
+                            content and let the page scroll, so nothing clips. */}
                         <Box sx={{
                             px: 2, py: 1.75,
-                            overflowY: 'auto', flex: 1,
+                            overflowY: {xs: 'visible', md: 'auto'},
+                            flex: {xs: 'none', md: 1},
                             direction: 'rtl',
                             '& > *': {direction: 'ltr'},
                             '&::-webkit-scrollbar': {width: 5},

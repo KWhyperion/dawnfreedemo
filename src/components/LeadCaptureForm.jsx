@@ -15,14 +15,18 @@ import submitLead from '../lib/submitLead.js';
 //   • Fails LOUDLY: any submit failure surfaces an error and the UI never shows
 //     success on a failed send (submitLead throws; we catch and show the error).
 
+// NB: px strings are deliberate. In MUI's sx a number between 0 and 1 is treated
+// as a percentage (width: 1 → 100%), which would make this absolutely-positioned
+// honeypot full-width and overflow the viewport. '1px' keeps it a true 1px box.
 const visuallyHidden = {
     position: 'absolute',
-    width: 1,
-    height: 1,
+    width: '1px',
+    height: '1px',
     padding: 0,
-    margin: -1,
+    margin: '-1px',
     overflow: 'hidden',
     clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
     whiteSpace: 'nowrap',
     border: 0,
 };

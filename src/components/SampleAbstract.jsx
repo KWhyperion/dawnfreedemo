@@ -14,7 +14,7 @@ export default function SampleAbstract({domainLabel, abstract, showTitle = true,
     const paragraphs = (abstract.body || '').split(/\n{2,}/).filter(Boolean);
 
     return (
-        <Paper variant="outlined" sx={{p: {xs: 2.5, md: 3.5}, position:'relative', border: '1px solid #2196F3',borderRadius: 2}}>
+        <Paper variant="outlined" sx={{p: {xs: 2.5, md: 3.5}, position:'relative', overflow: 'hidden', border: '1px solid #2196F3',borderRadius: 2}}>
             <Box sx={{display: 'flex', alignItems: 'center', gap: 1, mb: 1.5}}>
                 <Chip label="Sample abstract" size="small" color="primary" variant="outlined"/>
                 {domainLabel && (

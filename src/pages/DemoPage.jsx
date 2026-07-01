@@ -81,18 +81,30 @@ export default function DemoPage({sample, onBack}) {
         <Box sx={{minHeight: '100vh', py: {xs: 3, md: 5}}}>
             <Container maxWidth="lg">
                 <Button startIcon={<ArrowBackIcon/>} onClick={onBack} sx={{mb: 2}}>
-                    Choose a different field
+                    Choose a different topic
                 </Button>
 
+                {/* Responsive layout via CSS grid areas so the three groups can
+                    reorder between desktop and mobile without forking the tree:
+                      • Desktop (md+): two columns — sticky panel on the left
+                        spanning both rows; abstract (top-right) and capture
+                        (bottom-right) in the right column.
+                      • Mobile (xs): single column stacked abstract → panel →
+                        capture. Only the layout changes; the reveal orchestration
+                        and timing constants are untouched. */}
                 <Box
                     sx={{
-                        display: 'flex',
-                        flexDirection: {xs: 'column', md: 'row'},
+                        display: 'grid',
                         gap: {xs: 3, md: 1},
-                        alignItems: 'flex-start',
+                        alignItems: 'start',
+                        gridTemplateColumns: {xs: '1fr', md: 'auto minmax(0, 1fr)'},
+                        gridTemplateAreas: {
+                            xs: '"abstract" "panel" "capture"',
+                            md: '"panel abstract" "panel capture"',
+                        },
                     }}
                 >
-                    {/* ── Left: the reused analysis panel ──
+                    {/* ── Analysis panel ──
                         Mounted only once the abstract has been "pasted" (reveal.panel),
                         so the panel's own slide-in animation plays as the entrance.
                         Stubbed form-structure props: the demo has no multi-page live
@@ -100,14 +112,16 @@ export default function DemoPage({sample, onBack}) {
                         classifications is the derived topic control list (non-empty),
                         so the topic accordion renders. pageNumber:1/totalPages:2 makes
                         the panel render (pageNumber > 0) and treat this as the last
-                        page (so presentation auto-opens). */}
+                        page (so presentation auto-opens).
+                        Desktop: sticky, fixed viewport height. Mobile: static,
+                        full-width, content-height (sizing handled inside the panel). */}
                     <Box
                         sx={{
+                            gridArea: 'panel',
+                            minWidth: 0,
                             position: {md: 'sticky'},
                             top: {md: 16},
-                            height: {xs: 620, md: 'calc(100vh - 32px)'},
-                            flexShrink: 0,
-                            alignSelf: {xs: 'center', md: 'stretch'},
+                            height: {md: 'calc(100vh - 32px)'},
                         }}
                     >
                         {reveal.panel && (
@@ -126,16 +140,18 @@ export default function DemoPage({sample, onBack}) {
                         )}
                     </Box>
 
-                    {/* ── Right: abstract + capture ── */}
-                    <Box sx={{flex: 1, minWidth: 0, width: '100%',  mt: { md: '20px' }}}>
+                    {/* ── Abstract (title + body) ── */}
+                    <Box sx={{gridArea: 'abstract', minWidth: 0, mt: {md: '20px'}}}>
                         <SampleAbstract
                             domainLabel={sample?.domainLabel}
                             abstract={sample?.abstract}
                             showTitle={reveal.title}
                             showBody={reveal.body}
                         />
+                    </Box>
 
-                        {/* Capture becomes available once output begins resolving. */}
+                    {/* ── Lead capture — available once output begins resolving ── */}
+                    <Box sx={{gridArea: 'capture', minWidth: 0}}>
                         <Fade in={outputBegun} mountOnEnter>
                             <Box sx={{mt: 4}}>
                                 <Divider sx={{mb: 4}}/>

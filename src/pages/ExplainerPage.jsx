@@ -37,14 +37,16 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                 {/* Hero — the former lozenge text, now the page's headline */}
 
                 <Typography variant="h2" sx={{fontWeight: 600, mb: 2.5}}>
-                   Dawn Free - pre-submission feedback for authors
+                    Dawn Free - pre-submission feedback for authors
                 </Typography>
 
-                <Typography variant="h2" sx={{fontWeight: 400, fontSize: 18, color: 'text.secondary', mb: 4, lineHeight: 1.5}}>
-                    <p>Dawn Free gives authors private advice on their abstracts so they're in good shape before they reach the reviewers.
-                        </p>
-                    <p>It's a drop-in service that works with <em>any</em> abstract system. Simply add a link to a web page or email. </p>
-
+                <Typography variant="h2"
+                            sx={{fontWeight: 400, fontSize: 18, color: 'text.secondary', mb: 4, lineHeight: 1.5}}>
+                    <p>Dawn Free gives authors private advice on their abstracts so they're in good shape before they
+                        reach the reviewers.
+                    </p>
+                    <p>It's a drop-in service that works with <em>any</em> abstract system. Simply add a link to your
+                        Abstract Submission page or email. </p>
                     <p><strong>Choose a conference topic for a demonstration:</strong></p>
                 </Typography>
                 <Stack direction={{xs: 'column', sm: 'row'}} spacing={2} alignItems={{sm: 'center'}}>
@@ -70,7 +72,28 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                         See it
                     </Button>
                 </Stack>
+                <br/><br/><br/><br/>
+                <Typography
+                    variant="h2"
+                    sx={{
+                        fontWeight: 400,
+                        fontSize: 18,
+                        color: '#a8622f',
+                        mb: 4,
+                        lineHeight: 1.5,
+                        border: '1px solid #a8622f',
+                        p: '20px',
+                    }}
+                >
+                    <p>This is a "canned" demo with pre-loaded abstracts. We'll customise it for your conference with
+                        live data and conference themes.</p>
+                    <p><em>The software is built around a massive database of subject-specific abstracts. It's not a
+                        fancy repackaging of ChatGPT or any other popular AI - it's real, industrial-strength Machine
+                        Learning.</em>
+                    </p>
+                    <p><em>And it's free. No commitment. Just happy authors and reviewers.</em></p>
 
+                </Typography>
             </Container>
         </Box>
     );

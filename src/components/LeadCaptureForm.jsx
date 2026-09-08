@@ -140,7 +140,7 @@ export default function LeadCaptureForm({sampleKey}) {
                     disabled={status === 'submitting'}
                     sx={{alignSelf: 'flex-start'}}
                 >
-                    {status === 'submitting' ? 'Sending…' : 'Request a demo for my conference'}
+                    {status === 'submitting' ? 'Sending…' : 'Request a live demo for my conference'}
                 </Button>
             </Stack>
         </Box>

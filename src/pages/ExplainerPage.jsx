@@ -22,7 +22,19 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
         <Box sx={{minHeight: '100vh', py: {xs: 5, md: 9}}}>
             <Container maxWidth="md">
                 {/* Brand row — modest logo + secondary brand line */}
-                <Box sx={{display: 'flex', alignItems: 'center', gap: 1.5, mb: 4}}>
+                <Box
+                    component="a"
+                    href="https://hyperionlive.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1.5,
+                        mb: 4,
+                        textDecoration: 'none',
+                    }}
+                >
                     <Box
                         component="img"
                         src={faceLogo}
@@ -92,7 +104,11 @@ export default function ExplainerPage({selectedKey, onSelectDomain, onContinue})
                         Learning.</em>
                     </p>
                     <p><em>And it's free. No commitment. Just happy authors and reviewers.</em></p>
-
+<p>To see the real thing, <a href="sales@hyperionlive.com">get in touch </a></p>
+                </Typography>
+                <br/><br/><br/>
+                <Typography sx={{fontWeight: 600, fontSize: 16, color: 'text.secondary', letterSpacing: '0.01em'}}>
+                    <a href="https://hyperionlive.com" target="_blank">Hyperion Live</a>
                 </Typography>
             </Container>
         </Box>

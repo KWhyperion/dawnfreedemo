@@ -166,7 +166,7 @@ export default function DemoPage({sample, onBack}) {
                     color="text.secondary"
                     sx={{display: 'block', textAlign: 'center', mt: 4}}
                 >
-                    This is a prepared, illustrative example.
+                    This is a pre-prepared, illustrative example.
                 </Typography>
             </Container>
         </Box>
